@@ -4,15 +4,18 @@ import './App.css';
 import seaparets from "./images/seaparets.png";
 import Posts from "./components/Posts/Posts";
 import Form from "./components/Forms/Form";
+import useStyles from "./styles";
 
 function App() {
+  const classes = useStyles();
+
   return (
     <Container maxWidth="lg">
-<AppBar position="static" color="inherit">
-  <Typography  variant="h2" align="center">
+<AppBar className={classes.appBar} position="static" color="inherit">
+  <Typography className={classes.heading} variant="h2" align="center">
 movie critique
   </Typography>
-  <img src={seaparets} alt="img" height="500" />
+  <img className={classes.image} src={seaparets} alt="img" height="50" />
 </AppBar>
 <Grow in>
   <Container>
