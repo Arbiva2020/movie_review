@@ -5,8 +5,9 @@ import cors from "cors";
 //importing the routes from the file:
 import postRoutes from './routes/posts.js';
 //using express middleware to connect this to our app 
-app.use('/posts', postRoutes);
 const app = express();
+app.use('/posts', postRoutes);
+
 
 app.use(bodyParser.json({limit:"30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));
