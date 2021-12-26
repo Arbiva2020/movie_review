@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import useStyles from "./styles";
+import { useDispatch } from "react-redux";
+import { createPost } from "../../actions/posts";
 
 const Form = () => {
   const [postData, setPostData] = useState({
@@ -12,7 +14,15 @@ const Form = () => {
     selectedFields: "",
   });
   const classes = useStyles();
-  const handleSubmit = () => {};
+  //in order to dispatch actions: what the user submits:
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    //we are creating a post and pass all the data from our state:
+    dispatch(createPost(postData))
+  }
+
 
   const clear = () => {};
 
@@ -24,43 +34,20 @@ const Form = () => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography varient="h6">Adding a movie review</Typography>
-        <TextField
-          name="creator"
-          varient="outlined"
-          lable="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
+        <Typography variant="h5">Adding a movie review</Typography>
+        <TextField name ="creator" label="Creator" variant="outlined" value={postData.creator} onChange={(e) =>
             setPostData({ ...postData, creator: e.target.value })
-          }
-        />
-        <TextField
-          name="title"
-          varient="outlined"
-          lable="Title"
-          fullWidth
-          value={postData.title}
-          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
-        />
-        <TextField
-          name="message"
-          varient="outlined"
-          lable="Message"
-          fullWidth
-          value={postData.message}
-          onChange={(e) =>
+          } fullWidth />
+       <TextField name ="title" label="Title" variant="outlined" value={postData.title} onChange={(e) =>
+            setPostData({ ...postData, title: e.target.value })
+          } fullWidth />
+        <TextField name ="message" label="Message" variant="outlined" value={postData.message} onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
-          }
-        />
-        <TextField
-          name="tags"
-          varient="outlined"
-          lable="Tags"
-          fullWidth
-          value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
-        />
+          } fullWidth />
+        <TextField name ="tags" label="Tags" variant="outlined" value={postData.tags} onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value })
+          } fullWidth />
+    
         <div className={classes.fileInput}>
           <FileBase
             type="file"
@@ -70,25 +57,9 @@ const Form = () => {
             }
           />
         </div>
-        <Button
-          className={classes.buttonSubmit}
-          varient="contained"
-          color="primary"
-          size="large"
-          type="submit"
-          fullWidth
-        >
-          Submit
-        </Button>
-        <Button
-          varient="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
-          Clear
-        </Button>
+        <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth >Submit</Button>
+        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth >Clear</Button>
+    
       </form>
     </Paper>
   );
