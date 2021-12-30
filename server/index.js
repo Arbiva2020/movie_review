@@ -13,7 +13,7 @@ app.use(bodyParser.json({limit:"30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit:"30mb", extended: true}));
 app.use(cors());
 
-const CONNECTION_URL = "mongodb+srv://arbiva:adi101010@cluster0.xh1u1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const CONNECTION_URL = "mongodb+srv://arbiva0:adi101010@cluster0.xh1u1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const PORT = process.env.PORT || 5000;
 
 //mongodb+srv://arbiva:adi101010@cluster0.xh1u1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
