@@ -20,6 +20,7 @@ const Posts = () => {
                     </Grid>
                 ))}
             </Grid>
+            
         )
         
     );
